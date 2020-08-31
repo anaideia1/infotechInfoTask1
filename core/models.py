@@ -9,14 +9,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, related_name='posts')
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
+    img = models.ImageField(upload_to="images/", null=True, blank=True)
 
     class Meta:
         ordering = ('-publish',)
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
 
 
