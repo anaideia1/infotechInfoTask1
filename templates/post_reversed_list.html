@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Post List
+{% endblock title %}
+
+{% block content %}
+    {% for post in reversed_posts %}
+        <p> {{ post.title }} </p>
+    {% endfor %}
+{% endblock %}
