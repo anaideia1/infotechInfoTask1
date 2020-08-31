@@ -41,3 +41,13 @@ class PostCreateView(generic.CreateView):
     template_name = 'post_new.html'
     fields = ['title', 'body']
     success_url = reverse_lazy("post_list")
+
+
+class UserPostsView(generic.ListView):
+    model = Post
+    template_name = 'post_list.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(author__id=user.pk)
