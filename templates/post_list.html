@@ -7,5 +7,14 @@
 {% block content %}
     {% for post in posts %}
         <p> {{ post.title }} </p>
+        <p> {{ post.body }} </p>
+        {% if post.author %}
+            <h3>by {{ post.author }}</h3>
+        {% endif %}
+        {% if post.img %}
+            <img src="{{ post.img.url }}">
+        {% endif %}
+        <p>{{ post.publish }}</p>
+        <hr>
     {% endfor %}
 {% endblock %}

@@ -16,13 +16,8 @@ class PostsListView(generic.ListView):
         order = self.request.GET.get('order', 'asc')
         return order
 
-    def get_last_param(self):
-        last = self.request.GET.get("last", "day")
-        return last
-
     def get_queryset(self):
         order = self.get_ordering()
-        last = self.get_last_param()
         if order == "asc":
             return Post.objects.all().order_by("publish")
         elif order == "desc":
@@ -39,8 +34,13 @@ class PostsNewestListView(generic.ListView):
 class PostCreateView(generic.CreateView):
     model = Post
     template_name = 'post_new.html'
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'img']
     success_url = reverse_lazy("post_list")
+
+    def form_valid(self, form):
+        if self.request.user.is_authenticated:
+            form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class UserPostsView(generic.ListView):
