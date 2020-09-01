@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
+import warnings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o^yk2*i=7)h246!d3=appgx$y0s72+s*uwwlo1zdqt9ae6_e^&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['infotech-intro-task.herokuapp.com', 'localhost']
 
@@ -120,3 +121,7 @@ MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = 'post_list'
 LOGOUT_REDIRECT_URL = 'post_list'
+
+
+WHITENOISE_USE_FINDERS = True
+warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
