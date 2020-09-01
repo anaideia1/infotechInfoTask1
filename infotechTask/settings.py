@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,7 +15,7 @@ SECRET_KEY = 'o^yk2*i=7)h246!d3=appgx$y0s72+s*uwwlo1zdqt9ae6_e^&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://infotech-intro-task.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['infotech-intro-task.herokuapp.com', 'localhost']
 
 
 # Application definition
